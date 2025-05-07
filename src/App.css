@@ -1,0 +1,329 @@
+@import "tailwindcss";
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-color);
+    background-color: #EEE;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    color: var(--title-color);
+  }
+  
+  strong {
+    font-weight: 600;
+    color: #000;
+  }
+}
+
+/* Animations et transitions personnalisées */
+@layer components {
+  .transition-all {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s;
+  }
+  
+  .service-icon {
+    color: var(--primary-color);
+    font-size: 3rem;
+    transition: color 0.3s;
+  }
+  
+  .group:hover .service-icon {
+    color: #cde1f8;
+  }
+  
+  .progress-bar {
+    height: 0.625rem;
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+  
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 9999px;
+    transition: all 1s ease-out;
+  }
+  
+  .nav-link {
+    color: #fff;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .nav-link-active {
+    font-weight: 700;
+  }
+  
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #2563eb;
+  }
+  
+  .btn-outline {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s;
+  }
+  
+  .btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-title h1, .section-title h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .section-title p {
+    font-size: 1.125rem;
+  }
+  
+  .section-title-bar {
+    width: 6rem;
+    height: 0.25rem;
+    background-color: var(--primary-color);
+    margin: 1rem auto 0;
+  }
+}
+
+/* Animations pour les éléments qui apparaissent au scroll */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Style pour le formulaire de contact */
+.form-control {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  transition: all 0.3s;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.form-control.error {
+  border-color: #ef4444;
+}
+
+.form-error {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Accordéon pour les mentions légales */
+.accordion-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  background-color: #f3f4f6;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+  background-color: #e5e7eb;
+}
+
+.accordion-content {
+  padding: 1rem 1.5rem;
+  display: none;
+}
+
+.accordion-content.open {
+  display: block;
+}
+
+/* Styles pour les animations des progress bars */
+@keyframes progressAnimation {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: var(--progress-width);
+  }
+}
+
+.skill-progress {
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-progress .skill-progress-bar {
+  animation: progressAnimation 1.5s ease-out forwards;
+}
+
+/* Styles pour l'effet hover sur les services */
+.service-card:hover .service-icon {
+  color: #cde1f8;
+}
+
+/* Media queries pour l'affichage responsive */
+@media (max-width: 1200px) {
+  .section-title h1, .section-title h2 {
+    font-size: 1.875rem;
+  }
+  
+  .card-container {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/* Animation pour le bouton back-to-top */
+.back-to-top {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: #0d6efd;
+  color: #0d6efd;
+  padding: 0.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s, opacity 0.3s;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.back-to-top:hover {
+  background-color: #0d6efd;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Style personnalisé pour GitHub profile */
+.github-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s;
+}
+
+.github-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.github-stats {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .github-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.github-stat-item {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.github-stat-item:hover {
+  background-color: #e5e7eb;
+}
+
+.github-avatar {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 9999px;
+  border: 4px solid #e5e7eb;
+  transition: transform 0.3s;
+}
+
+.github-avatar:hover {
+  transform: scale(1.05);
+}
+
+/* Animations pour le loading spinner */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+  border-radius: 9999px;
+  height: 3rem;
+  width: 3rem;
+  border-top: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+}
+
+
